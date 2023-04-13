@@ -16,6 +16,7 @@ module.exports = (env, argv) => {
     return {
         entry: {
             index: './src/index.js',
+            styles: './src/styles.js'
         },
         output: {
             filename: '[name].[contenthash].js',
@@ -45,12 +46,10 @@ module.exports = (env, argv) => {
         plugins: [
             new HtmlWebpackPlugin({
                 template: './src/index.html',
-                chunks: ['index']
+                chunks: ['index','styles']
             }),
             // Spread syntax - averiguar
-            ...(isProduction ? [new MiniCssExtractPlugin({filename: 'assets/css/[name].[contenthash].css'})]: [])
-
-
+            ...(isProduction ? [new MiniCssExtractPlugin({filename: 'assets/css/[name].[contenthash].css'})]: []),
         ],
         devServer: {
             static: {
@@ -63,23 +62,4 @@ module.exports = (env, argv) => {
             ]
         }
     };
-}
-
-
-// const name = 'yhoan';
-
-// if (name == 'yhoana') {
-//     console.log('La persona si se llama yhoana');
-// } else {
-//     console.log('La persona no se llama yhoana');
-// }
-
-// // If ternario
-// console.log(name == 'yhoana' ? 'La persona si se llama yhoana' : 'La persona no se llama yhoana');
-
-
-
-// console.log('La persona ' + name == 'yhoana' ? 'si' : 'no' + ' se llama yhoana');
-
-// // Template literals
-// console.log(`La persona ${name == 'yhoana' ? 'si' : 'no'} se llama yhoana`);
+};
