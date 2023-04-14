@@ -8,23 +8,90 @@
 </head>
 <body>
     
-    <header>
-        <h1>Profesores</h1>
+    <header class="my-5">
+        <h1 class="text-center">Profesores</h1>
     </header>
 
     <main class="container">
-        <section>
-            <article>
+        <section class="row text-center">
+            <article class="col-xs-12 col-md-6">
                 IMAGEN
             </article>
             
-            <article>
+            <article class="col-xs-12 col-md-6">
                 FORMULARIO
             </article>
         </section>
 
-        <section>
-            <table></table>
+        <section class="row text-center">
+            <div class="col-12">
+                <table class="table table-hover">
+
+                <caption>
+                    Registro de los profesores
+                </caption>
+
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                Id de profesor 
+                            </th>
+                            <th scope="col">
+                                Nombre
+                            </th>
+                            <th scope="col">
+                                Descripcion
+                            </th>
+                            <th scope="col">
+                                Correo
+                            </th>
+                            <th scope="col">
+                                Fecha de nacimiento
+                            </th>
+                            <th scope="col">
+                                opciones
+                            </th>
+
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                102030
+                            </td>
+                            <td>
+                                Christian Londono
+                            </td>
+                            <td>
+                                Estudiante de desarrollo
+                            </td>
+                            <td>
+                                c@email.com
+                            </td>
+                            <td>
+                                04/07/1992
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary">
+                                    <em class="fa fa-pencil"></em> Editar
+                                </button>
+                                <button type="button" class="btn btn-danger">
+                                    <em class="fa fa-trash"></em>    Eliminar
+                                </button>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                    
+                </table>
+                
+
+            </div>
         </section>
 
     </main>
