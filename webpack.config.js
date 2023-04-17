@@ -40,6 +40,19 @@ module.exports = (env, argv) => {
                             presets: ['@babel/preset-env']
                         }
                     }
+                },
+                {
+                    test: /\.(png|jpg|jpeg|gif|svg)$/,
+                    use: [
+                        {
+                            loader: 'url-loader',
+                            options: {
+                                limit: 8192,
+                                name: 'assts/img/[name].[ext]'
+                            }
+
+                        }
+                    ]
                 }
             ]
         },
@@ -50,6 +63,13 @@ module.exports = (env, argv) => {
             }),
             // Spread syntax - averiguar
             ...(isProduction ? [new MiniCssExtractPlugin({filename: 'assets/css/[name].[contenthash].css'})]: []),
+
+            new CopyWebpackPlugin({
+                patterns: [{
+                    from: './src/assets/img',
+                    to: 'assets/img'
+                }]
+            })
         ],
         devServer: {
             static: {
