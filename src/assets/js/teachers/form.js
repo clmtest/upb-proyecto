@@ -30,3 +30,7 @@ export function getFormData(){
     return teacher;
 };
 
+export function resetForm(){
+    formElements.form.reset();
+}
+

@@ -1,6 +1,7 @@
 // Se encarga de la interacción de JS con html
+import alertify from 'alertifyjs';
 
-import {formElements,getFormData} from './form'
+import {formElements,getFormData,resetForm} from './form'
 import {createTeacher, readTeachers} from './repositorio'
 
 export function listeners(){
@@ -13,8 +14,10 @@ export function listeners(){
 function listenFormSubmitEvent(){
     formElements.form.addEventListener('submit', (event) => {
         event.preventDefault();
-        createTeacher(getFormData()) 
-        listTeachers()       
+        createTeacher(getFormData());
+        resetForm();
+        alertify.success('Profe guardado correctamente')
+        listTeachers();       
     });
 }
 
