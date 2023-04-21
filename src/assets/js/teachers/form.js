@@ -21,11 +21,12 @@ export function getFormData(){
      */
 
     const teacher = {
+        id: new Date().getTime(), 
         name : formElements.fields.name.value,
         description : formElements.fields.description.value,
         email : formElements.fields.email.value,
         date : formElements.fields.date.value,
     };
     return teacher;
-    
-}
+};
+
