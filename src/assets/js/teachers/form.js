@@ -70,6 +70,22 @@ export const fieldConfigurations = [
     },
 
     {
+        input: formElements.fields.email,
+        validations: [
+            {
+                errorId: `${formElements.fields.email.id}Pattern`,
+                errorMessage: 'El correo electrónico no cumple con el formato correcto',
+                // Las validaciones retornaran un False cuando debe mostrar el mensaje de error 
+                // True cuando no debe mostrar el mensaje de error
+                validationFunction: (value) => {
+                    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)
+                }
+
+            }
+        ]
+    },
+
+    {
         input: formElements.fields.date,
         validations: [
             {
