@@ -4,9 +4,9 @@
 import alertify from 'alertifyjs';
 
 // Own Libraries
-import {validateForm} from './../utils/validations'
+import {validateForm, validateField, removeInputErrorMessage,removeErrorClassNameFields,removeErrorMessageElement} from './../utils/validations'
 
-//Module libraries
+// Module libraries
 import {formElements,fieldConfigurations, getFormData,resetForm} from './form'
 import {createTeacher, readTeachers} from './repositorio'
 
@@ -14,16 +14,20 @@ export function listeners(){
     window.addEventListener('load', () => {
         listenFormSubmitEvent();
         listTeachers();
+        listenFormFieldsChangeEvent();
+        listenFormResetEvent();
     });
 }
 
 function listenFormSubmitEvent(){
     formElements.form.addEventListener('submit', (event) => {
         event.preventDefault();
+        alertify.dismissAll();
 
         if (validateForm(fieldConfigurations)){ // El if se agrego para el validation
             createTeacher(getFormData());
             resetForm();
+            removeErrorClassNameFields('is-valid');
             alertify.success('Profe guardado correctamente');
             listTeachers();   
         } else {
@@ -116,4 +120,24 @@ function listTeachers(){
         tbody.appendChild(rowEmpty); // Agregamos al body
     }
     
+}
+
+function listenFormFieldsChangeEvent(){
+    fieldConfigurations.forEach(({input,validations}) => {
+        input.addEventListener('change', () => {
+            removeInputErrorMessage(input);
+            validations.forEach((validationConfig) => {
+                validateField(input, validationConfig);
+            });
+        })
+    });
+}
+
+function listenFormResetEvent(){
+    formElements.form.addEventListener('reset', () => {
+        removeErrorMessageElement();
+        removeErrorClassNameFields('is-valid');
+        resetForm();
+        alertify.dismissAll();
+    });
 }

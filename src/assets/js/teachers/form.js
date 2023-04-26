@@ -42,7 +42,7 @@ export const fieldConfigurations = [
         validations: [
             {
                 errorId: `${formElements.fields.description.id}Required`,
-                errorMessage: 'Es Obligatoria una descripción',
+                errorMessage: 'Es obligatoria una descripción',
                 // Las validaciones retornaran un False cuando debe mostrar el mensaje de error 
                 // True cuando no debe mostrar el mensaje de error
                 validationFunction: (value) => {
@@ -51,7 +51,39 @@ export const fieldConfigurations = [
 
             }
         ]
-    }
+    },
+
+    {
+        input: formElements.fields.email,
+        validations: [
+            {
+                errorId: `${formElements.fields.email.id}Required`,
+                errorMessage: 'Es correo electrónico es obligatorio',
+                // Las validaciones retornaran un False cuando debe mostrar el mensaje de error 
+                // True cuando no debe mostrar el mensaje de error
+                validationFunction: (value) => {
+                    return value.trim() !== '';
+                }
+
+            }
+        ]
+    },
+
+    {
+        input: formElements.fields.date,
+        validations: [
+            {
+                errorId: `${formElements.fields.date.id}Required`,
+                errorMessage: 'La fecha es obligatoria',
+                // Las validaciones retornaran un False cuando debe mostrar el mensaje de error 
+                // True cuando no debe mostrar el mensaje de error
+                validationFunction: (value) => {
+                    return value.trim() !== '';
+                }
+
+            }
+        ]
+    },
 
 ];
 
