@@ -14,5 +14,9 @@ export function readTeachers(){
     return getDatabase(dbName);
 };
 
+export function findTeacherByID(idTeacher){
+    return readTeachers().find(({id}) => id === parseInt(idTeacher));
+}
+
 
 
